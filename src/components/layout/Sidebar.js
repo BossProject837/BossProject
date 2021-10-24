@@ -1,10 +1,16 @@
 import React from "react";
+import CrearProyecto from "../proyects/CrearProyecto";
 
 const Sidebar = () => {
   return (
     <aside>
-      <h2>Project Manager</h2>
-      <div>Tus Proyectos</div>
+      <h3>Menu</h3>
+      <br />
+      <CrearProyecto></CrearProyecto>
+      <br />
+      <div>
+        <h4>Tus Proyectos</h4>{" "}
+      </div>
     </aside>
   );
 };
