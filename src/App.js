@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Registro from "./components/auth/Registro";
 import Proyectos from "./components/proyects/Proyectos";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/registro" component={Registro} />
         <Route exact path="/proyectos" component={Proyectos} />
       </Switch>
+      <Footer></Footer>
     </Router>
   );
 }
