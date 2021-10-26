@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import proyectoContext from "../../context/proyectos/proyectoContext";
 
-const Proyecto = ({proyecto}) => {
+const Proyecto = ({ proyecto }) => {
+
+  // Extraer el State
+  const proyectosContext = useContext(proyectoContext);
+  const { seleccionarProyecto } = proyectosContext;
+
   return (
     <li>
-      <button type="button" className="btn btn-link link">📋 <b>{proyecto.nombre}</b></button>
+      <button
+        type="button"
+        className="btn btn-link link"
+        onClick={() => seleccionarProyecto(proyecto.id)}
+      >
+        📋 <b>{proyecto.nombre}</b>
+      </button>
     </li>
   );
 };

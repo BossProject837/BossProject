@@ -1,12 +1,16 @@
 import React, { useReducer } from "react";
 import proyectoContext from "./proyectoContext";
 import proyectoReducer from "./proyectoReducer";
-import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS  } from "../../types";
-
-
+import { v4 as uuidv4 } from 'uuid';
+import {
+  FORMULARIO_PROYECTO,
+  OBTENER_PROYECTOS,
+  AGREGAR_PROYECTO,
+  VALIDAR_FORMULARIO,
+  PROYECTO_ACTUAL
+} from "../../types";
 
 const ProyectoState = (props) => {
-
   const proyectos = [
     { id: 1, nombre: "Weather" },
     { id: 2, nombre: "Dating Manager" },
@@ -17,6 +21,8 @@ const ProyectoState = (props) => {
   const initialState = {
     proyectos: [],
     formulario: false,
+    errorFormulario: false,
+    proyecto: null
   };
 
   // Dispatch para ejecutar las acciones
@@ -32,18 +38,50 @@ const ProyectoState = (props) => {
   // Obtener los proyectos
   const obtenerProyectos = () => {
     dispatch({
-        type: OBTENER_PROYECTOS,
-        payload: proyectos
-      });
+      type: OBTENER_PROYECTOS,
+      payload: proyectos,
+    });
+  };
+
+  // Agregar nuevo proyecto
+  const agregarProyecto = (proyecto) => {
+    proyecto.id = uuidv4()
+
+    // Insertar el proyecto en el state
+    dispatch({
+      type: AGREGAR_PROYECTO,
+      payload: proyecto
+    })
+  }
+
+  // Validar Formulario de proyectos
+  const mostrarError = () => {
+    dispatch({
+      type: VALIDAR_FORMULARIO,
+     
+    })
+  }
+
+  // Seleccionar proyecto con click
+  const seleccionarProyecto = proyectoid => {
+    dispatch({
+      type: PROYECTO_ACTUAL,
+      payload: proyectoid
+    })
   }
 
   return (
     <proyectoContext.Provider
-      value={{
+      value={{ 
         proyectos: state.proyectos,
         formulario: state.formulario,
+        errorFormulario: state.errorFormulario,
+        proyecto: state.proyecto,
         mostrarFormulario,
-        obtenerProyectos
+        obtenerProyectos,
+        agregarProyecto,
+        mostrarError,
+        seleccionarProyecto
       }}
     >
       {props.children}

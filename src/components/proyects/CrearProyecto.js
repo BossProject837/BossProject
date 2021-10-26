@@ -4,7 +4,13 @@ import proyectoContext from "../../context/proyectos/proyectoContext";
 const CrearProyecto = () => {
   // Obtener el State del formulario
   const proyectosContext = useContext(proyectoContext);
-  const { formulario, mostrarFormulario } = proyectosContext;
+  const {
+    formulario,
+    errorFormulario,
+    mostrarFormulario,
+    agregarProyecto,
+    mostrarError,
+  } = proyectosContext;
 
   // State de Nuevo Proyecto
   const [proyecto, guardarProyecto] = useState({
@@ -22,9 +28,23 @@ const CrearProyecto = () => {
     });
   };
 
-  // onSubmit prevenir reinicio
+  // onSubmit prevenir reinicio y enviar el proyecto
   const onSubmitProyecto = (e) => {
     e.preventDefault();
+
+    // Validar el proyecto
+    if (nombre === "") {
+      mostrarError();
+      return;
+    }
+
+    // Agregar al State
+    agregarProyecto(proyecto);
+
+    // Reiniciar el form
+    guardarProyecto({
+      nombre: "",
+    });
   };
 
   return (
@@ -54,6 +74,11 @@ const CrearProyecto = () => {
             value={"🗄 Guarda tu Proyecto"}
           />
         </form>
+      ) : null}
+      {errorFormulario ? (
+        <div class="alert alert-danger" role="alert">
+          Debes escribir un nombre...
+        </div>
       ) : null}
     </Fragment>
   );

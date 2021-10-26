@@ -20,7 +20,7 @@ const Tarea = ({ tarea }) => {
           ) : (
             <a
               href="#!"
-              className="btn btn-outline-warning btn-sm estado"
+              className="btn btn-outline-danger btn-sm estado"
               type="button"
             >
               Pendiente
