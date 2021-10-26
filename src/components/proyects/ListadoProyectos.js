@@ -9,7 +9,7 @@ const ListadoProyectos = () => {
   // Extraer proyectos del State inicial
   const { proyectos, obtenerProyectos } = proyectosContext;
 
-  // Obtener proyectos cuando carag el componenete
+  // Obtener proyectos cuando carga el componenete
   useEffect(() => {
     obtenerProyectos();
   }, []);

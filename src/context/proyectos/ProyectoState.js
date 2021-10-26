@@ -4,14 +4,16 @@ import proyectoReducer from "./proyectoReducer";
 import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS  } from "../../types";
 
 
-const proyectos = [
-  { id: 1, nombre: "Weather" },
-  { id: 2, nombre: "Dating Manager" },
-  { id: 3, nombre: "Criptonite" },
-  { id: 4, nombre: "MovieInfo" },
-];
 
 const ProyectoState = (props) => {
+
+  const proyectos = [
+    { id: 1, nombre: "Weather" },
+    { id: 2, nombre: "Dating Manager" },
+    { id: 3, nombre: "Criptonite" },
+    { id: 4, nombre: "MovieInfo" },
+  ];
+
   const initialState = {
     proyectos: [],
     formulario: false,
@@ -28,7 +30,7 @@ const ProyectoState = (props) => {
   };
 
   // Obtener los proyectos
-  const obtenerProyectos = (proyectos) => {
+  const obtenerProyectos = () => {
     dispatch({
         type: OBTENER_PROYECTOS,
         payload: proyectos
