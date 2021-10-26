@@ -100,7 +100,7 @@ const Registro = () => {
           </span>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-primary w-100 authbutton">
           Registrar
         </button>
       </form>

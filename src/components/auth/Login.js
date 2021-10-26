@@ -66,12 +66,13 @@ const Login = () => {
           </span>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-primary w-100 authbutton">
           Ingresar
         </button>
 
       </form>
-      <Link to={'/registro'} className="link">Obtener cuenta</Link>
+      <Link to={'/registro'} className="link">Obtener cuenta</Link><br/>
+      <Link to={'/proyectos'} className="link">Proyectos</Link>
       <img id="portada" src={portada} alt="foto" />
     </div>
   );

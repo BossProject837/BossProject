@@ -1,7 +1,6 @@
 :root {
   --primary: #0d6efd;
   --footer: #1b2845;
-  
 }
 
 * {
@@ -20,7 +19,7 @@ code {
 
 h1 {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   background: var(--primary);
   color: white;
   margin: 10px 0 30px;
@@ -32,13 +31,12 @@ h2 {
   margin: 10px 0 10px;
 }
 
-button {
+.authbutton {
   box-shadow: 5px 5px 10px #ccc;
   margin-bottom: 20px;
 }
 
 .link {
-  
   text-decoration: none;
 }
 
@@ -49,22 +47,26 @@ button {
   box-shadow: 5px 5px 10px #ccc;
 }
 
-aside{
+aside {
   background: #acd7ec;
-  height: 600px;
+  min-height: 700px;
+  padding: 40px;
+  
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #ccc;
+}
+
+main {
+  background: #dbefff;
+  height: 100%;
   padding: 40px;
   margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #ccc;
 }
 
-main {
-  background: #d6edff;
-  height: 600px;
-  padding: 40px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px #ccc;
+main ul {
+  margin: 50px 150px 0 0px;
 }
 
 .footer {
@@ -76,15 +78,76 @@ main {
   box-shadow: 5px 5px 10px #ccc;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#proyecto {
+  color: blue;
+  font-weight: bold;
 }
 
-@media screen and (max-width: 600px){
-  aside{
-    height: max-content;
-    
+.listaProyectos {
+  list-style: none;
+}
+
+.listaTareas {
+  display: flex;
+  justify-content: space-between;
+}
+
+.liTareas p {
+  margin-bottom: 0;
+}
+
+.estado {
+  margin-left: 20px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nombre-usuario {
+  font-size: 30px;
+}
+
+.cerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#eliminarProyecto {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    margin-bottom: 10px;
+  }
+  aside {
+    min-height: min-content;
+  }
+
+  main {
+    padding: 10px;
+    min-height: min-content;
+  }
+
+  main ul {
+    padding: 0px;
+    margin: 30px 0 0 0;
+  }
+
+  .listaTareas p {
+    margin: 0 10px 0px 0px;
+    padding: 0;
+  }
+
+  .estado {
+    font-size: 8px;
+    margin-left: 5px;
+  }
+
+  .cerrar {
+    margin-right: 20px;
   }
 }
 

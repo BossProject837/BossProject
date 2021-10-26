@@ -1,5 +1,7 @@
 import React from "react";
 import Sidebar from "../layout/Sidebar";
+import FormTarea from "../tasks/FormTarea";
+import ListadoTareas from "../tasks/ListadoTareas";
 
 const Proyectos = () => {
   return (
@@ -13,9 +15,13 @@ const Proyectos = () => {
         </div>
         <div className="col-md-8">
           <main>
-            <div className="container">
-              <h3>notas</h3>
-            </div>
+            <nav className="cerrar">
+              <a href="/" className="link ">
+                Cerrar sesión
+              </a>
+            </nav>
+            <FormTarea></FormTarea>
+            <ListadoTareas></ListadoTareas>
           </main>
         </div>
       </div>
