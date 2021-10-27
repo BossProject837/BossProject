@@ -110,10 +110,10 @@ main ul {
   font-size: 30px;
 }
 
-.cerrar {
+/* .cerrar {
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 #eliminarProyecto {
   margin-top: 20px;
@@ -125,6 +125,7 @@ main ul {
   }
   aside {
     min-height: min-content;
+    margin-bottom: 10px;
   }
 
   main {

@@ -7,15 +7,16 @@ import {
   OBTENER_PROYECTOS,
   AGREGAR_PROYECTO,
   VALIDAR_FORMULARIO,
-  PROYECTO_ACTUAL
+  PROYECTO_ACTUAL,
+  ELIMINAR_PROYECTO
 } from "../../types";
 
 const ProyectoState = (props) => {
   const proyectos = [
-    { id: 1, nombre: "Weather" },
+    /* { id: 1, nombre: "Weather" },
     { id: 2, nombre: "Dating Manager" },
-    { id: 3, nombre: "Criptonite" },
-    { id: 4, nombre: "MovieInfo" },
+    { id: 3, nombre: "Criptonite" }, */
+    { id: 4, nombre: "MovieInfo" }, 
   ];
 
   const initialState = {
@@ -70,6 +71,14 @@ const ProyectoState = (props) => {
     })
   }
 
+  // Elimina un proyecto
+  const eliminarProyecto = (proyectoid) => {
+    dispatch({
+      type: ELIMINAR_PROYECTO,
+      payload: proyectoid
+    })
+  }
+
   return (
     <proyectoContext.Provider
       value={{ 
@@ -81,7 +90,8 @@ const ProyectoState = (props) => {
         obtenerProyectos,
         agregarProyecto,
         mostrarError,
-        seleccionarProyecto
+        seleccionarProyecto,
+        eliminarProyecto
       }}
     >
       {props.children}

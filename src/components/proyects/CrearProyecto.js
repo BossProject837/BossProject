@@ -80,6 +80,8 @@ const CrearProyecto = () => {
           Debes escribir un nombre...
         </div>
       ) : null}
+      <br/>
+      <br/>
     </Fragment>
   );
 };

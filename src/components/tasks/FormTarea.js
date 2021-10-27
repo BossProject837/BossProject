@@ -18,12 +18,12 @@ const FormTarea = () => {
     <div>
       <form>
         <div>
-          <h2>🗒 Agrega tareas a tu proyecto</h2>
+        <h1 id="proyecto">🗃 {proyectoActual.nombre}</h1>
           <br />
           <input
             type="text"
             className="form-control"
-            placeholder="Nombre Tarea"
+            placeholder="Crea una Tarea..."
           />
         </div>
         <div>
@@ -31,7 +31,7 @@ const FormTarea = () => {
           <input
             type="submit"
             className="btn btn-primary authbutton"
-            value={"+"}
+            value={"Agregar +"}
           />
         </div>
       </form>
