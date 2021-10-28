@@ -12,7 +12,7 @@
 /build
 
 # misc
-.variables.env*
+*.misvariables.env
 .DS_Store
 .env.local
 .env.development.local
