@@ -2,7 +2,8 @@
 2. npm install -D nodemon
 3. npm i express mongoose dotenv
 
-4. "scripts": {
+4. en el archivo package.json
+ "scripts": {
     "start": "node .",
     "dev": "nodemon ."
   },
