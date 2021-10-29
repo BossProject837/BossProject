@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <div className="container col-md-6 ppal">
-      <h1>BossProject</h1>
+      <h1>🅱️ BossProject</h1>
       <h2>Inicia Sesión</h2>
       <form onSubmit={onSubmit}>
         <div className="mb-3">

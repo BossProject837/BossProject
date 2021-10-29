@@ -28,7 +28,7 @@ const Registro = () => {
 
   return (
     <div className="container col-md-6 ppal">
-      <h1>Crea tu cuenta</h1>
+      <h1>🅱️ Crea tu cuenta</h1>
       <h2>Ingresa tus datos</h2>
       <form onSubmit={onSubmit}>
         <div className="mb-3">

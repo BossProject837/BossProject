@@ -76,7 +76,7 @@ const CrearProyecto = () => {
         </form>
       ) : null}
       {errorFormulario ? (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Debes escribir un nombre...
         </div>
       ) : null}
