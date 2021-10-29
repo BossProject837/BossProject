@@ -13,9 +13,9 @@ import {
 
 const ProyectoState = (props) => {
   const proyectos = [
-    /* { id: 1, nombre: "Weather" },
+    { id: 1, nombre: "Weather" },
     { id: 2, nombre: "Dating Manager" },
-    { id: 3, nombre: "Criptonite" }, */
+    { id: 3, nombre: "Criptonite" }, 
     { id: 4, nombre: "MovieInfo" }, 
   ];
 
@@ -64,7 +64,7 @@ const ProyectoState = (props) => {
   }
 
   // Seleccionar proyecto con click
-  const seleccionarProyecto = proyectoid => {
+  const proyectoActual = proyectoid => {
     dispatch({
       type: PROYECTO_ACTUAL,
       payload: proyectoid
@@ -90,7 +90,7 @@ const ProyectoState = (props) => {
         obtenerProyectos,
         agregarProyecto,
         mostrarError,
-        seleccionarProyecto,
+        proyectoActual,
         eliminarProyecto
       }}
     >

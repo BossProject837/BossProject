@@ -21,10 +21,11 @@ h1 {
   text-align: center;
   padding: 10px;
   background: var(--primary);
-  color: white;
+  color: rgb(255, 255, 255);
   margin: 10px 0 30px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #ccc;
+  text-shadow: 2px 2px 10px rgb(0, 17, 255);
 }
 
 h2 {
@@ -49,18 +50,25 @@ h2 {
 
 aside {
   background: #acd7ec;
-  min-height: 800px;
+  height: 100%;
   padding: 40px;
   
   border-radius: 10px;
   box-shadow: 5px 5px 10px #ccc;
 }
 
+.listado-proyectos {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgb(146, 146, 146);
+}
+
 main {
   background: #dbefff;
-  height: 100%;
+  min-height: 650px;
   padding: 40px;
-  margin-bottom: 10px;
+ 
   border-radius: 10px;
   box-shadow: 5px 5px 10px #ccc;
   
@@ -110,10 +118,7 @@ main ul {
   font-size: 30px;
 }
 
-/* .cerrar {
-  display: flex;
-  justify-content: flex-end;
-} */
+
 
 #eliminarProyecto {
   margin-top: 20px;
@@ -124,13 +129,14 @@ main ul {
     margin-bottom: 10px;
   }
   aside {
-    min-height: min-content;
+    min-height: fit-content;
     margin-bottom: 10px;
   }
 
   main {
     padding: 10px;
-    min-height: min-content;
+    min-height: fit-content;
+    margin-bottom: 10px;
   }
 
   main ul {
@@ -148,9 +154,7 @@ main ul {
     margin-left: 5px;
   }
 
-  .cerrar {
-    margin-right: 20px;
-  }
+  
 }
 
 @media (prefers-reduced-motion: no-preference) {

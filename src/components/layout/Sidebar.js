@@ -9,9 +9,10 @@ const Sidebar = () => {
       <Barra></Barra>
       <br />
       <CrearProyecto></CrearProyecto>
-      <br />
-      <div>
+
+      <div className="listado-proyectos">
         <h4>🗂 Tus Proyectos:</h4>
+        <hr />
         <ListadoProyectos></ListadoProyectos>
       </div>
     </aside>
