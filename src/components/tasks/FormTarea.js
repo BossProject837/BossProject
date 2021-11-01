@@ -3,23 +3,21 @@ import proyectoContext from "../../context/proyectos/proyectoContext";
 import tareaContext from "../../context/tareas/tareaContext";
 
 const FormTarea = () => {
-  
   // Extraer el State de proyecto
   const proyectosContext = useContext(proyectoContext);
   const { proyecto } = proyectosContext;
 
   // Extraer el state de tarea
   const tareasContext = useContext(tareaContext);
-  const { agregarTarea } = tareasContext;
+  const { errorTarea, agregarTarea, validarTarea, obtenerTareas } = tareasContext;
 
   // State del formulario
   const [tarea, guardarTarea] = useState({
-    nombre: ''
+    nombre: "",
   });
 
-  // Extraer el nombre de la tarea 
+  // Extraer el nombre de la tarea
   const { nombre } = tarea;
-
 
   // Si no hay un proyecto seleccionado
   if (!proyecto) {
@@ -33,34 +31,40 @@ const FormTarea = () => {
   const handleChange = (e) => {
     guardarTarea({
       ...tarea,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     // Validar tarea
+    if (nombre.trim() === "") {
+      validarTarea();
+      return;
+    }
 
-
-    // Pasar la validacion
-
+    // Pasar la validacion - se iguala 'errorTarea: false' en tareaReducer => case AGREGAR_TAREA
 
     // Agregar la nueva tarea al state de tareas
     tarea.proyectoId = proyectoActual.id;
-    tarea.estado = false
+    tarea.estado = false;
     agregarTarea(tarea);
 
+    // Obtener y filtrar las tareas de proyectua actual
+    obtenerTareas(proyectoActual.id);
+
     // Reiniciar el form de tareas
-
-
-  }
+    guardarTarea({
+      nombre: ''
+    })
+  };
 
   return (
     <div>
       <form onSubmit={onSubmit}>
         <div>
-        <h1 id="proyecto">🗃 {proyectoActual.nombre}</h1>
+          <h1 id="proyecto">🗃 {proyectoActual.nombre}</h1>
           <br />
           <input
             type="text"
@@ -80,6 +84,7 @@ const FormTarea = () => {
           />
         </div>
       </form>
+      { errorTarea ? <p className="alert alert-danger" role="alert">Debes ponerle un nombre primero...</p>: null}
     </div>
   );
 };

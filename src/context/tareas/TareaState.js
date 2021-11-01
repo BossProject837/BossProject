@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import tareaContext from "./tareaContext";
 import tareaReducer from "./tareaReducer";
-import { TAREAS_PROYECTO, AGREGAR_TAREA } from "../../types";
+import { TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA } from "../../types";
 
 const TareaState = (props) => {
   // State inicial
@@ -16,15 +16,10 @@ const TareaState = (props) => {
       { id: 7, nombre: "Añadir estilos", estado: false, proyectoId: 4 },
       { id: 8, nombre: "Realizar deploy", estado: false, proyectoId: 1 },
       { id: 9, nombre: "Crear Portada", estado: true, proyectoId: 3 },
-      { id: 10, nombre: "Acceder a la Api", estado: true, proyectoId: 4 },
-      { id: 11, nombre: "Añadir estilos", estado: false, proyectoId: 1 },
-      { id: 12, nombre: "Realizar deploy", estado: false, proyectoId: 2 },
-      { id: 13, nombre: "Crear Portada", estado: true, proyectoId: 4 },
-      { id: 14, nombre: "Acceder a la Api", estado: true, proyectoId: 4 },
-      { id: 15, nombre: "Añadir estilos", estado: false, proyectoId: 1 },
-      { id: 16, nombre: "Realizar deploy", estado: false, proyectoId: 1 },
+      
     ],
     tareasProyecto: null,
+    errorTarea: false
   };
 
   // Dispatch para ejecutar las acciones
@@ -48,13 +43,22 @@ const TareaState = (props) => {
     });
   };
 
+  // Validar formulario de tarea
+  const validarTarea = () => {
+    dispatch({
+      type: VALIDAR_TAREA
+    })
+  }
+
   return (
     <tareaContext.Provider
       value={{
         tareas: state.tareas,
         tareasProyecto: state.tareasProyecto,
+        errorTarea: state.errorTarea,
         obtenerTareas,
         agregarTarea,
+        validarTarea
       }}
     >
       {props.children}
