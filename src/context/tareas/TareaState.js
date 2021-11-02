@@ -1,7 +1,14 @@
 import React, { useReducer } from "react";
 import tareaContext from "./tareaContext";
 import tareaReducer from "./tareaReducer";
-import { TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA } from "../../types";
+import {
+  TAREAS_PROYECTO,
+  AGREGAR_TAREA,
+  VALIDAR_TAREA,
+  ELIMINAR_TAREA,
+  ESTADO_TAREA,
+  TAREA_ACTUAL
+} from "../../types";
 
 const TareaState = (props) => {
   // State inicial
@@ -16,10 +23,10 @@ const TareaState = (props) => {
       { id: 7, nombre: "Añadir estilos", estado: false, proyectoId: 4 },
       { id: 8, nombre: "Realizar deploy", estado: false, proyectoId: 1 },
       { id: 9, nombre: "Crear Portada", estado: true, proyectoId: 3 },
-      
     ],
     tareasProyecto: null,
-    errorTarea: false
+    errorTarea: false,
+    tareaSeleccionada: null
   };
 
   // Dispatch para ejecutar las acciones
@@ -39,14 +46,38 @@ const TareaState = (props) => {
   const agregarTarea = (tarea) => {
     dispatch({
       type: AGREGAR_TAREA,
-      payload: tarea
+      payload: tarea,
     });
   };
 
   // Validar formulario de tarea
   const validarTarea = () => {
     dispatch({
-      type: VALIDAR_TAREA
+      type: VALIDAR_TAREA,
+    });
+  };
+
+  // Eliminar tarea por id
+  const eliminarTarea = (id) => {
+    dispatch({
+      type: ELIMINAR_TAREA,
+      payload: id,
+    });
+  };
+
+  // Cambiar estado tarea
+  const cambiarEstado = (tarea) => {
+    dispatch({
+      type: ESTADO_TAREA,
+      payload: tarea,
+    });
+  };
+
+  // Extrae una tarea para editarla
+  const guardarTareaActual = (tarea) => {
+    dispatch({
+      type: TAREA_ACTUAL,
+      payload: tarea
     })
   }
 
@@ -56,9 +87,13 @@ const TareaState = (props) => {
         tareas: state.tareas,
         tareasProyecto: state.tareasProyecto,
         errorTarea: state.errorTarea,
+        tareaSeleccionada: state.tareaSeleccionada,
         obtenerTareas,
         agregarTarea,
-        validarTarea
+        validarTarea,
+        eliminarTarea,
+        cambiarEstado,
+        guardarTareaActual
       }}
     >
       {props.children}
