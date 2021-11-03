@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import tareaContext from "../../context/tareas/tareaContext";
 
@@ -9,7 +9,26 @@ const FormTarea = () => {
 
   // Extraer el state de tarea
   const tareasContext = useContext(tareaContext);
-  const { errorTarea, agregarTarea, validarTarea, obtenerTareas } = tareasContext;
+  const {
+    tareaSeleccionada,
+    errorTarea,
+    agregarTarea,
+    validarTarea,
+    obtenerTareas,
+    actualizarTarea,
+    limpiarTarea,
+  } = tareasContext;
+
+  // useEffect que detecta si hay una tarea seleccionada
+  useEffect(() => {
+    if (tareaSeleccionada !== null) {
+      guardarTarea(tareaSeleccionada);
+    } else {
+      guardarTarea({
+        nombre: "",
+      });
+    }
+  }, [tareaSeleccionada]);
 
   // State del formulario
   const [tarea, guardarTarea] = useState({
@@ -44,20 +63,29 @@ const FormTarea = () => {
       return;
     }
 
-    // Pasar la validacion - se iguala 'errorTarea: false' en tareaReducer => case AGREGAR_TAREA
+    // Revisar si el usuario esta editando o esta agreagando una nueva tarea
+    if (tareaSeleccionada === null) {
+      // Tarea nueva
+      // Agregar la nueva tarea al state de tareas
+      tarea.proyectoId = proyectoActual.id;
+      tarea.estado = false;
+      agregarTarea(tarea);
+    } else {
+      // Actualizar tarea existente
+      actualizarTarea(tarea);
+      // tareaSeleccionada to null
+      limpiarTarea();
+    }
 
-    // Agregar la nueva tarea al state de tareas
-    tarea.proyectoId = proyectoActual.id;
-    tarea.estado = false;
-    agregarTarea(tarea);
+    // Pasar la validacion - se iguala 'errorTarea: false' en tareaReducer => case AGREGAR_TAREA
 
     // Obtener y filtrar las tareas de proyectua actual
     obtenerTareas(proyectoActual.id);
 
     // Reiniciar el form de tareas
     guardarTarea({
-      nombre: ''
-    })
+      nombre: "",
+    });
   };
 
   return (
@@ -80,11 +108,15 @@ const FormTarea = () => {
           <input
             type="submit"
             className="btn btn-primary authbutton"
-            value={"Agregar +"}
+            value={tareaSeleccionada ? "Editar ✏️" : "Agregar +"}
           />
         </div>
       </form>
-      { errorTarea ? <p className="alert alert-danger" role="alert">Debes ponerle un nombre primero...</p>: null}
+      {errorTarea ? (
+        <p className="alert alert-danger" role="alert">
+          Debes ponerle un nombre primero...
+        </p>
+      ) : null}
     </div>
   );
 };
