@@ -5,7 +5,6 @@ import Login from "./components/auth/Login";
 import Registro from "./components/auth/Registro";
 import Proyectos from "./components/proyects/Proyectos";
 import Footer from "./components/layout/Footer";
-
 import ProyectoState from "./context/proyectos/ProyectoState";
 import TareaState from "./context/tareas/TareaState";
 

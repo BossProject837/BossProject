@@ -2,10 +2,8 @@ import React, { Fragment, useState, useContext } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 
 const CrearProyecto = () => {
-
   // Obtener el State del formulario
   const proyectosContext = useContext(proyectoContext);
-
   const {
     formulario,
     errorFormulario,
@@ -57,9 +55,6 @@ const CrearProyecto = () => {
       >
         📝 Crea un Proyecto
       </button>
-
-
-
       {formulario ? (
         <form onSubmit={onSubmitProyecto}>
           <input

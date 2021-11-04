@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import portada from "../../assets/portada.jpg";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 const Login = () => {
   // State para iniciar sesion
@@ -20,9 +20,9 @@ const Login = () => {
   };
 
   // Click para iniciar sesion
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
+  const onSubmit = e =>{
+      e.preventDefault()
+  }
 
   return (
     <div className="container col-md-6 ppal">
@@ -69,16 +69,10 @@ const Login = () => {
         <button type="submit" className="btn btn-primary w-100 authbutton">
           Ingresar
         </button>
+
       </form>
-      <center>
-        <Link to={"/registro"} className="link">
-          Obtener cuenta
-        </Link>
-        <br />
-        <Link to={"/proyectos"} className="link">
-          Proyectos
-        </Link>
-      </center>
+      <Link to={'/registro'} className="link">Obtener cuenta</Link><br/>
+      <Link to={'/proyectos'} className="link">Proyectos</Link>
       <img id="portada" src={portada} alt="foto" />
     </div>
   );

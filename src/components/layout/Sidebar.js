@@ -6,9 +6,7 @@ import Barra from "./Barra";
 const Sidebar = () => {
   return (
     <aside>
-
       <Barra></Barra>
-      
       <br />
       <CrearProyecto></CrearProyecto>
 
