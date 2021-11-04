@@ -31,7 +31,9 @@ app.get("/", (req, res) => {
   res.send("👷🏻‍♂️ Backend de BoosProject...");
 });
 
-// 6 - creamos archivo llamado var3.env alli escribimos DB_MONGO= y enseguida pegamos la url de mongo atlas con el usuario password y nombre de la base de datos correspondiente.
+// 6 - creamos archivo llamado var3.env alli escribimos:
+// DB_MONGO= y enseguida pegamos la url de mongo atlas con el usuario password y nombre de la base de datos.
+// SECRETA= y una palabra secreta para utenticar el JWT
 
 // 7 - creamos carpeta config y dentro el archivo db.js
 
