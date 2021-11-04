@@ -11,7 +11,7 @@ const Registro = () => {
     confirmar: "",
   });
 
-  // Extraer usuario
+  // Extraer usuario - destructuring
   const { email, password, nombre, confirmar } = usuario;
 
   const onChange = (e) => {
@@ -104,9 +104,11 @@ const Registro = () => {
           Registrar
         </button>
       </form>
-      <Link to={"/"} className="link">
-        Inicia sesión
-      </Link>
+      <center>
+        <Link to={"/"} className="link">
+          Inicia sesión
+        </Link>
+      </center>
       <img id="portada" src={portada} alt="foto" />
     </div>
   );
