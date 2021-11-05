@@ -2,11 +2,15 @@ import React from "react";
 import CrearProyecto from "../proyects/CrearProyecto";
 import ListadoProyectos from "../proyects/ListadoProyectos";
 import Barra from "./Barra";
+import Hora from "./Hora";
+
 
 const Sidebar = () => {
   return (
     <aside>
+
       <Barra></Barra>
+      <Hora></Hora>
       <br />
       <CrearProyecto></CrearProyecto>
 
