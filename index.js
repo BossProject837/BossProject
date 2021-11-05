@@ -18,6 +18,9 @@ const PORT = process.env.PORT || 4000;
 
 // 15 - importar rutas 
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/proyectos', require('./routes/proyectos'));
+
 
 // 4 - arrancar el backend - ejecutar npm run dev - verificar terminal y localhost:4000
 app.listen(PORT, () => {
@@ -33,7 +36,7 @@ app.get("/", (req, res) => {
 
 // 6 - creamos archivo llamado var3.env alli escribimos:
 // DB_MONGO= y enseguida pegamos la url de mongo atlas con el usuario password y nombre de la base de datos.
-// SECRETA= y una palabra secreta para utenticar el JWT
+// SECRETA= y una palabra secreta para autenticar el JWT
 
 // 7 - creamos carpeta config y dentro el archivo db.js
 

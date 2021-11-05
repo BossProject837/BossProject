@@ -22,13 +22,17 @@ router.post(
       "Tu password debe ser mínimo de 6 caracteres..."
     ).isLength({ min: 6 }),
   ],
+
+  // 33 - vamos a usuarioController.js
+
   // 17 - crear usuario - api/usuarios
   usuarioController.crearUsuario
 );
 
 // 18 - Creamos una carpeta llamada controllers y dentro un archivo llamado usuarioController.js
 
-// 22 - Creamos una carpeta llamada models y dentro un archivo llamado Usuario.js
 
 // 21 - exportamos router
 module.exports = router;
+
+// 22 - Creamos una carpeta llamada models y dentro un archivo llamado Usuario.js

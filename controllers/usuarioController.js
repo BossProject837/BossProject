@@ -2,6 +2,7 @@
 const Usuario = require("../models/Usuario");
 
 // 27 - npm i bcryptjs - en la terminal
+
 // 28 - importamos bcryptjs para encriptar los passwords en la base de datos
 const bcryptjs = require("bcryptjs");
 
@@ -39,6 +40,8 @@ exports.crearUsuario = async (req, res) => {
     const salt = await bcryptjs.genSalt(10);
     usuario.password = await bcryptjs.hash(password, salt);
 
+    // 30 - vamos a usuarios.js
+
     // 19  Guarda nuevo usuario
     await usuario.save();
 
@@ -64,3 +67,5 @@ exports.crearUsuario = async (req, res) => {
     res.status(400).send("Hubo un error...");
   }
 };
+
+// 37 - Creamos una archivo auth.js en la carperta routes

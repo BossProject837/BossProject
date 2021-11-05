@@ -27,3 +27,5 @@ const UsuarioSchema = mongoose.Schema({
 
 // 25 - exportamos
 module.exports = mongoose.model("Usuario", UsuarioSchema);
+
+// 26 - vamos a usuarioController.js
