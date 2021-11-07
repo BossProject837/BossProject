@@ -7,6 +7,11 @@ const jwt = require("jsonwebtoken");
 // 57 - Creamos metodo para utenticar user
 exports.crearProyecto = async (req, res) => {
   // 58 - Revisamos si hay errores
+  const errores = validationResult(req);
+  if (!errores.isEmpty()) {
+    return res.status(400).json({ errores: errores.array() });
+  }
+
   try {
     // 59 - Crear Proyecto
     const proyecto = new Proyecto(req.body);

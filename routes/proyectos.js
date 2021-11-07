@@ -6,7 +6,12 @@ const proyectoController = require("../controllers/proyectoController");
 const auth = require("../middleware/auth");
 
 // 54 - Crear proyectos - api/proyectos
-router.post("/", auth, proyectoController.crearProyecto);
+router.post(
+  "/",
+  auth,
+  [check("nombre", "Debes escribir un nombre...").not().isEmpty()],
+  proyectoController.crearProyecto
+);
 router.get("/", auth, proyectoController.crearProyecto);
 
 module.exports = router;
