@@ -10,11 +10,17 @@ exports.crearProyecto = async (req, res) => {
   try {
     // 59 - Crear Proyecto
     const proyecto = new Proyecto(req.body);
+
+    // 59 - Guardar el creador via jwt
+    proyecto.creador = req.usuario.id;
+
+    // 59 -  Guardamos el proyecto
     proyecto.save();
     res.json(proyecto);
-    
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error...");
   }
 };
+
+// 60 - Creamos una carpeta middleware y dentro un archivo llamado auth.js
