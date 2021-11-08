@@ -12,7 +12,7 @@ router.post(
   [check("nombre", "Debes escribir un nombre...").not().isEmpty()],
   proyectoController.crearProyecto
 );
-router.get("/", auth, proyectoController.crearProyecto);
+router.get("/", auth, proyectoController.obtenerProyectos);
 
 module.exports = router;
 

@@ -29,3 +29,16 @@ exports.crearProyecto = async (req, res) => {
 };
 
 // 60 - Creamos una carpeta middleware y dentro un archivo llamado auth.js
+
+// 65 - Obtener todos los proyectos del usuario actual
+exports.obtenerProyectos = async (req, res) => {
+  try {
+    const proyectos = await (await Proyecto.find({ creador: req.usuario.id }));
+    res.json({proyectos})
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Hubo un error...");
+  }
+};
+
+
