@@ -29,11 +29,12 @@ exports.crearProyecto = async (req, res) => {
 };
 
 // 60 - Creamos una carpeta middleware y dentro un archivo llamado auth.js
+// --------------------------------------------------------------------------
 
 // 65 - Obtener todos los proyectos del usuario actual
 exports.obtenerProyectos = async (req, res) => {
   try {
-    const proyectos = await await Proyecto.find({ creador: req.usuario.id });
+    const proyectos = await Proyecto.find({ creador: req.usuario.id });
     res.json({ proyectos });
   } catch (error) {
     console.log(error);
@@ -79,11 +80,34 @@ exports.actualizarProyecto = async (req, res) => {
     );
 
     res.json({ proyecto });
-
-
-
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error...");
+  }
+};
+
+// 67 - Eliminar Proyecto
+exports.eliminarProyecto = async (req, res) => {
+  try {
+    // Revisar el id
+    let proyecto = await Proyecto.findById(req.params.id);
+
+    // Verificar si el proyecto existe
+    if (!proyecto) {
+      return res.status(404).json({ msg: "Proyecto no encontrado..." });
+    }
+
+    // Verificar el creador del proyecto
+    if (proyecto.creador.toString() !== req.usuario.id) {
+      req.status(401).json({ msg: "No autorizado..." });
+    }
+
+    // Eliminar proyecto
+    await Proyecto.findOneAndRemove({ _id: req.params.id });
+    res.json({msg: 'Proyecto eliminado...'})
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("HUbo un error...");
   }
 };
