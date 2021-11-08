@@ -12,7 +12,17 @@ router.post(
   [check("nombre", "Debes escribir un nombre...").not().isEmpty()],
   proyectoController.crearProyecto
 );
+
+// - Obtener proyectos - api/proyectos
 router.get("/", auth, proyectoController.obtenerProyectos);
+
+// - Actualizar proyecto via id - api/proyectos
+router.put(
+  "/:id",
+  auth,
+  [check("nombre", "Debes escribir un nombre...").not().isEmpty()],
+  proyectoController.actualizarProyecto
+);
 
 module.exports = router;
 
