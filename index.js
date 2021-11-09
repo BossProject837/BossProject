@@ -1,4 +1,5 @@
 // 1 - importar express
+const { application } = require("express");
 const express = require("express");
 
 // 12 - importamos la conexion a la base de datos desde el archivo db.js
@@ -20,6 +21,7 @@ const PORT = process.env.PORT || 4000;
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/proyectos', require('./routes/proyectos'));
+app.use('/api/tareas', require('./routes/tareas'))
 
 
 // 4 - arrancar el backend - ejecutar npm run dev - verificar terminal y localhost:4000
