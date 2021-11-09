@@ -111,3 +111,5 @@ exports.eliminarProyecto = async (req, res) => {
     res.status(500).send("HUbo un error...");
   }
 };
+
+// 68 - Creamos el modelo de Tarea.js en la carperta models
