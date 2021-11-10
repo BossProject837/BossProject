@@ -1,7 +1,7 @@
 // 8 - importamos mongoose
 const mongoose = require('mongoose');
 
-// 9 - importamos el archivo variables.env
+// 9 - importamos el archivo .env
 require('dotenv').config({ path: 'var3.env' })
 
 // 10 - conectar base de datos
@@ -24,3 +24,5 @@ const conectarDB = async () => {
 
 // 11 - exportar conexion
 module.exports = conectarDB;
+
+// 12 - vamos a index.js

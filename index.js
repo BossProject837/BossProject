@@ -5,24 +5,27 @@ const express = require("express");
 // 12 - importamos la conexion a la base de datos desde el archivo db.js
 const conectarDB = require('./config/db');
 
-// 2 - crear el servidor
+// 2.1 - crear el servidor
 const app = express();
 
 // 13 - conectarse a la base de datos
 conectarDB();
 
-// 21 - habilitamos express.json
+
+
+// 2.2 - habilitamos express.json
 app.use(express.json({extended: true}))
 
 // 3 - puerto del backend
 const PORT = process.env.PORT || 4000;
 
-// 15 - importar rutas 
+// 14 - importar rutas - Se van agregando cada ves que vamos creando la ruta respectiva en ./routes
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/proyectos', require('./routes/proyectos'));
 app.use('/api/tareas', require('./routes/tareas'))
 
+// 15 - Rutas - creamos una carpeta llamada routes y dentro un archivo llamado usuarios.js
 
 // 4 - arrancar el backend - ejecutar npm run dev - verificar terminal y localhost:4000
 app.listen(PORT, () => {
@@ -42,4 +45,3 @@ app.get("/", (req, res) => {
 
 // 7 - creamos carpeta config y dentro el archivo db.js
 
-// 14 - Rutas - creamos una carpeta llamada routes y dentro un archivo llamado usuarios.js

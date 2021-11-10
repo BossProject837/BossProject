@@ -9,14 +9,14 @@ const bcryptjs = require("bcryptjs");
 // 33 - importamos validationResult del paquete express-validator
 const { validationResult } = require("express-validator");
 
-// 35 - npm i jsonwebtoken - en laterminal - importamos
+// 34 - npm i jsonwebtoken - en laterminal - importamos
 const jwt = require("jsonwebtoken");
 
 // ============================================================================
 
 // 19 - Crear usuario
 exports.crearUsuario = async (req, res) => {
-  // 34 - Revisamos si hay errores
+  // 35 - Revisamos si hay errores
   const errores = validationResult(req);
   if (!errores.isEmpty()) {
     return res.status(400).json({ errores: errores.array() });
@@ -44,6 +44,8 @@ exports.crearUsuario = async (req, res) => {
 
     // 19  Guarda nuevo usuario
     await usuario.save();
+
+    // 20 - Vamos a routes/usuarios.js
 
     // 36 - Crear y firmar el JWT
     const payload = {
