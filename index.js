@@ -34,7 +34,7 @@ app.listen(PORT, () => {
 
 // 5 - definir la pagina principal
 app.get("/", (req, res) => {
-  res.send("👷🏻‍♂️ Backend de BoosProject...");
+  res.send("👷🏻‍♂️ Backend de BoosProject desplegado en Heroku!!... 👍🏼");
 });
 
 // 6 - creamos archivo llamado var3.env alli escribimos:
