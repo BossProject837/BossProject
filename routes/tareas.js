@@ -19,6 +19,9 @@ router.post(
 // Obtener Tareas - api/tareas
 router.get("/", auth, tareaController.obtenerTareas);
 
+// Actualizar tarea - api/tareas
+router.put("/:id", auth, tareaController.actualizarTarea)
+
 module.exports = router;
 
 // 75 - Creamos el archivo tareaController.js en la carpeta controllers

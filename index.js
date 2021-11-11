@@ -11,8 +11,6 @@ const app = express();
 // 13 - conectarse a la base de datos
 conectarDB();
 
-
-
 // 2.2 - habilitamos express.json
 app.use(express.json({extended: true}))
 
