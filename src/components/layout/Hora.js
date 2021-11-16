@@ -4,6 +4,7 @@ const Hora = () => {
   return (
     <div>
       <center className='alert alert-primary'>Bogota, Colombia.</center>
+      
       <iframe
         title="hora"
         src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FBogota"
