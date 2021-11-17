@@ -38,6 +38,22 @@ const Registro = () => {
       confirmar.trim() === ""
     ) {
       mostrarAlerta("Todos los campos son obligatorios...", "alert-danger");
+      return;
+    }
+
+    // Validar password > 6 caracteres
+    if (password.length < 6 || password.length > 10) {
+      mostrarAlerta(
+        "El password debe tener entre 6 y 10 caractéres...",
+        "alert-danger"
+      );
+      return;
+    }
+
+    // Validar que los dos passwords sean iguales
+    if (password !== confirmar) {
+      mostrarAlerta("Los passwords deben ser iguales...", "alert-danger");
+      return;
     }
   };
 
