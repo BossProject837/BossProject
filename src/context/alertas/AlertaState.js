@@ -22,11 +22,12 @@ const AlertaContext = (props) => {
       },
     });
 
+    // Limpiar alerta despues de 5 segundos
     setTimeout(() => {
       dispatch({
         type: OCULTAR_ALERTA,
       });
-    });
+    }, 5000);
   };
 
   return (

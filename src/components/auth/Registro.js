@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import portada from "../../assets/portada.jpg";
 import { Link } from "react-router-dom";
+import AlertaContext from "../../context/alertas/alertaContext";
 
 const Registro = () => {
+  // Extraer los valores de AlertaContext.js
+  const alertaContext = useContext(AlertaContext);
+  const { alerta, mostrarAlerta } = alertaContext;
+
   // State para iniciar sesion
   const [usuario, guardarUsuario] = useState({
     nombre: "",
@@ -24,12 +29,29 @@ const Registro = () => {
   // Click para iniciar sesion
   const onSubmit = (e) => {
     e.preventDefault();
+
+    // Validar que no hayan campos vacios
+    if (
+      nombre.trim() === "" ||
+      email.trim() === "" ||
+      password.trim() === "" ||
+      confirmar.trim() === ""
+    ) {
+      mostrarAlerta("Todos los campos son obligatorios...", "alert-danger");
+    }
   };
 
   return (
     <div className="container col-md-6 ppal">
       <h1>🅱️ Crea tu cuenta</h1>
-      <h2>Ingresa tus datos</h2>
+      {alerta ? (
+        <div className={`alert ${alerta.categoria}`} role="alert">
+          {alerta.msg}
+        </div>
+      ) : null}
+      <center>
+        <h2>Ingresa tus datos</h2>
+      </center>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -104,9 +126,11 @@ const Registro = () => {
           Registrar
         </button>
       </form>
-      <Link to={"/"} className="link">
-        Inicia sesión
-      </Link>
+      <center>
+        <Link to={"/"} className="link">
+          Inicia sesión
+        </Link>
+      </center>
       <img id="portada" src={portada} alt="foto" />
     </div>
   );
