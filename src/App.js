@@ -8,20 +8,23 @@ import Footer from "./components/layout/Footer";
 import ProyectoState from "./context/proyectos/ProyectoState";
 import TareaState from "./context/tareas/TareaState";
 import AlertaState from "./context/alertas/AlertaState";
+import AuthState from "./context/autenticacion/AuthState";
 
 function App() {
   return (
     <ProyectoState>
       <TareaState>
         <AlertaState>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/registro" component={Registro} />
-              <Route exact path="/proyectos" component={Proyectos} />
-            </Switch>
-            <Footer></Footer>
-          </Router>
+          <AuthState>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact path="/registro" component={Registro} />
+                <Route exact path="/proyectos" component={Proyectos} />
+              </Switch>
+              <Footer></Footer>
+            </Router>
+          </AuthState>
         </AlertaState>
       </TareaState>
     </ProyectoState>

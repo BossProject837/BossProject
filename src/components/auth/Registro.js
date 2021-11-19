@@ -2,11 +2,16 @@ import React, { useState, useContext } from "react";
 import portada from "../../assets/portada.jpg";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
+import AuthContext from "../../context/autenticacion/authContext";
 
 const Registro = () => {
   // Extraer los valores de AlertaContext.js
   const alertaContext = useContext(AlertaContext);
   const { alerta, mostrarAlerta } = alertaContext;
+
+  // Extraer los valores de AuthContext.js
+  const authContext = useContext(AuthContext);
+  const { registrarUsuario } = authContext;
 
   // State para iniciar sesion
   const [usuario, guardarUsuario] = useState({
@@ -55,6 +60,13 @@ const Registro = () => {
       mostrarAlerta("Los passwords deben ser iguales...", "alert-danger");
       return;
     }
+
+    // Registrar Usuario
+    registrarUsuario({
+      nombre,
+      email,
+      password,
+    });
   };
 
   return (
