@@ -2,8 +2,11 @@
 const { application } = require("express");
 const express = require("express");
 
+// 101 - lastima pense que iban a ser 100 nada mas 🤷🏻‍♂️ - npm i cors - importamos
+const cors = require("cors");
+
 // 12 - importamos la conexion a la base de datos desde el archivo db.js
-const conectarDB = require('./config/db');
+const conectarDB = require("./config/db");
 
 // 2.1 - crear el servidor
 const app = express();
@@ -11,17 +14,20 @@ const app = express();
 // 13 - conectarse a la base de datos
 conectarDB();
 
+// 102 - Habilitamos cors
+app.use(cors());
+
 // 2.2 - habilitamos express.json
-app.use(express.json({extended: true}))
+app.use(express.json({ extended: true }));
 
 // 3 - puerto del backend
 const PORT = process.env.PORT || 4000;
 
 // 14 - importar rutas - Se van agregando cada ves que vamos creando la ruta respectiva en ./routes
-app.use('/api/usuarios', require('./routes/usuarios'));
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/proyectos', require('./routes/proyectos'));
-app.use('/api/tareas', require('./routes/tareas'))
+app.use("/api/usuarios", require("./routes/usuarios"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/proyectos", require("./routes/proyectos"));
+app.use("/api/tareas", require("./routes/tareas"));
 
 // 15 - Rutas - creamos una carpeta llamada routes y dentro un archivo llamado usuarios.js
 
@@ -29,7 +35,6 @@ app.use('/api/tareas', require('./routes/tareas'))
 app.listen(PORT, () => {
   console.log("===========================================\n");
   console.log(`✅ Servidor funcionando en el puerto ${PORT}!!`);
-  
 });
 
 // 5 - definir la pagina principal
@@ -42,4 +47,3 @@ app.get("/", (req, res) => {
 // SECRETA= y una palabra secreta para autenticar el JWT
 
 // 7 - creamos carpeta config y dentro el archivo db.js
-
