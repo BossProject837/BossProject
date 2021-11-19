@@ -1,17 +1,28 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import portada from "../../assets/portada.jpg";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
 import AuthContext from "../../context/autenticacion/authContext";
 
-const Registro = () => {
+const Registro = (props) => {
   // Extraer los valores de AlertaContext.js
   const alertaContext = useContext(AlertaContext);
   const { alerta, mostrarAlerta } = alertaContext;
 
   // Extraer los valores de AuthContext.js
   const authContext = useContext(AuthContext);
-  const { registrarUsuario } = authContext;
+  const { mensaje, autenticado, registrarUsuario } = authContext;
+
+  // Cuando el usuario se registre o salga un error de usuario ya existe
+  useEffect(() => {
+    if (autenticado) {
+      props.history.push('/')
+    }
+
+    if (mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+  }, [mensaje, autenticado, props.history])
 
   // State para iniciar sesion
   const [usuario, guardarUsuario] = useState({
