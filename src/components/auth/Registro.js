@@ -13,15 +13,16 @@ const Registro = (props) => {
   const authContext = useContext(AuthContext);
   const { mensaje, autenticado, registrarUsuario } = authContext;
 
-  // Cuando el usuario se registre o salga un error de usuario ya existe
+  // Cuando el usuario se registre o salga un error de: usuario ya existe
   useEffect(() => {
     if (autenticado) {
-      props.history.push('/')
+      props.history.push('/proyectos')
     }
 
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mensaje, autenticado, props.history])
 
   // State para iniciar sesion

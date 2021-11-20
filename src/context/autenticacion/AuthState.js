@@ -10,6 +10,7 @@ import {
   CERRAR_SESION,
 } from "../../types";
 import clienteAxios from "../../config/axios";
+import tokenAuth from "../../config/tokenAuth";
 
 const AuthState = (props) => {
   // initial state
@@ -26,23 +27,45 @@ const AuthState = (props) => {
   const registrarUsuario = async (datos) => {
     try {
       const respuesta = await clienteAxios.post("/api/usuarios", datos);
-      console.log(respuesta.data);
-
+      //console.log(respuesta.data);
       dispatch({
         type: REGISTRO_EXITOSO,
         payload: respuesta.data,
       });
+      // Obtener el usuario
+      usuarioAutenticado();
     } catch (error) {
       //console.log(error.response.data.msg);
-
       const alerta = {
         msg: error.response.data.msg,
         categoria: "alert-danger",
       };
-
       dispatch({
         type: REGISTRO_ERROR,
         payload: alerta,
+      });
+    }
+  };
+
+  // Retornar usuario autenticado
+  const usuarioAutenticado = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // todo: funcion que envia el token por headers
+      tokenAuth(token);
+    }
+    try {
+      const respuesta = await clienteAxios.get("/api/auth");
+      //console.log(respuesta);
+      dispatch({
+        type: OBTENER_USUARIO,
+        payload: respuesta.data.usuario
+      })
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: LOGIN_ERROR,
       });
     }
   };
