@@ -22,8 +22,8 @@ const Registro = (props) => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-  // eslint-disable-next-line
-  }, [mensaje, autenticado, props.history])
+  
+  }, [mensaje, autenticado, props.history, mostrarAlerta])
 
   // State para iniciar sesion
   const [usuario, guardarUsuario] = useState({
