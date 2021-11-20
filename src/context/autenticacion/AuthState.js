@@ -1,6 +1,10 @@
 import React, { useReducer } from "react";
 import authContext from "./authContext";
 import authReducer from "./authReducer";
+
+import clienteAxios from "../../config/axios";
+import tokenAuth from "../../config/token";
+
 import {
   REGISTRO_EXITOSO,
   REGISTRO_ERROR,
@@ -9,8 +13,6 @@ import {
   LOGIN_ERROR,
   //CERRAR_SESION,
 } from "../../types";
-import clienteAxios from "../../config/axios";
-import tokenAuth from "../../config/token";
 
 const AuthState = (props) => {
   // initial state

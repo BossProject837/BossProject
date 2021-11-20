@@ -22,7 +22,7 @@ const Registro = (props) => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   }, [mensaje, autenticado, props.history])
 
   // State para iniciar sesion
