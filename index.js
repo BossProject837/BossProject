@@ -17,6 +17,8 @@ conectarDB();
 // 102 - Habilitamos cors
 app.use(cors());
 
+// 103 - Vamos a routes/auth.js
+
 // 2.2 - habilitamos express.json
 app.use(express.json({ extended: true }));
 

@@ -30,26 +30,39 @@ exports.autenticarUsuario = async (req, res) => {
 
     // 47 - Si todo es correcto - se recibe un token
     const payload = {
-        usuario: { id: usuario.id },
-      };
-      jwt.sign(
-        payload,
-        process.env.SECRETA,
-        {
-          expiresIn: 3600000,
-        },
-        (error, token) => {
-          if (error) throw error;
-  
-          // Mensaje de confirmacion
-          res.json({ token });
-        }
-      );
+      usuario: { id: usuario.id },
+    };
+    jwt.sign(
+      payload,
+      process.env.SECRETA,
+      {
+        expiresIn: 3600000,
+      },
+      (error, token) => {
+        if (error) throw error;
 
+        // Mensaje de confirmacion
+        res.json({ token });
+      }
+    );
   } catch (error) {
     console.log(error);
   }
 };
 
+// 104 - Obtener que usuario está autenticado
+exports.usuarioAutenticado = async (req, res) => {
+  /* const errores = validationResult(req);
+  if (!errores.isEmpty()) {
+    return res.status(400).json({ errores: errores.array() });
+  } */
+  try {
+    const usuario = await Usuario.findById(req.usuario.id);
+    res.json({usuario})
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Hubo un error..." });
+  }
+};
 
 // 48 - Creamos el archivo Proyecto.js en la carpeta models
