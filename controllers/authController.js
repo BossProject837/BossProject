@@ -52,12 +52,9 @@ exports.autenticarUsuario = async (req, res) => {
 
 // 104 - Obtener que usuario está autenticado
 exports.usuarioAutenticado = async (req, res) => {
-  /* const errores = validationResult(req);
-  if (!errores.isEmpty()) {
-    return res.status(400).json({ errores: errores.array() });
-  } */
+  
   try {
-    const usuario = await Usuario.findById(req.usuario.id);
+    const usuario = await Usuario.findById(req.usuario.id).select('-password');
     res.json({usuario})
   } catch (error) {
     console.log(error);
