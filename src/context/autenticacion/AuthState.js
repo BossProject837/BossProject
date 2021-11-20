@@ -71,6 +71,15 @@ const AuthState = (props) => {
     }
   };
 
+  // Cuando el usuario inicia sesion
+  const iniciarSesion = async (datos) =>{
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <authContext.Provider
       value={{
