@@ -10,7 +10,7 @@ import {
   //CERRAR_SESION,
 } from "../../types";
 import clienteAxios from "../../config/axios";
-import tokenAuth from "../../config/tokenAuth";
+import tokenAuth from "../../config/token";
 
 const AuthState = (props) => {
   // initial state
@@ -51,7 +51,7 @@ const AuthState = (props) => {
   const usuarioAutenticado = async () => {
     const token = localStorage.getItem("token");
     if (token) {
-      // todo: funcion que envia el token por headers
+      // funcion que envia el token por headers
       tokenAuth(token);
     }
     try {
@@ -62,8 +62,7 @@ const AuthState = (props) => {
         payload: respuesta.data.usuario
       })
     } catch (error) {
-      console.log(error);
-
+      console.log(error.response);
       dispatch({
         type: LOGIN_ERROR,
       });
