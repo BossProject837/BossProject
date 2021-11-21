@@ -1,12 +1,12 @@
 // 1 - importar express
-const { application } = require("express");
+//const { application } = require("express");
 const express = require("express");
-
-// 101 - lastima pense que iban a ser 100 nada mas 🤷🏻‍♂️ - npm i cors - importamos
-const cors = require("cors");
 
 // 12 - importamos la conexion a la base de datos desde el archivo db.js
 const conectarDB = require("./config/db");
+
+// 101 - lastima pense que iban a ser 100 nada mas 🤷🏻‍♂️ - npm i cors - importamos
+const cors = require("cors");
 
 // 2.1 - crear el servidor
 const app = express();

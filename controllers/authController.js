@@ -49,8 +49,9 @@ exports.autenticarUsuario = async (req, res) => {
     console.log(error);
   }
 };
+// 48 - Creamos el archivo Proyecto.js en la carpeta models
 
-// 104 - Obtener que usuario está autenticado
+// 104 - Obtener el usuario que está autenticado
 exports.usuarioAutenticado = async (req, res) => {
   
   try {
@@ -62,4 +63,3 @@ exports.usuarioAutenticado = async (req, res) => {
   }
 };
 
-// 48 - Creamos el archivo Proyecto.js en la carpeta models
