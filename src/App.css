@@ -173,7 +173,15 @@ main ul {
     margin-left: 5px;
   }
 
-  
+  .nombre-usuario {
+    font-size: 25px;
+  }
+
+  .footer {
+    
+    margin: 100px 0 0;
+    
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

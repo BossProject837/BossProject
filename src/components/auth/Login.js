@@ -112,9 +112,7 @@ const Login = (props) => {
           Obtener cuenta
         </Link>
         <br />
-        <Link to={"/proyectos"} className="link">
-          Proyectos
-        </Link>
+        
       </center>
       <img id="portada" src={portada} alt="foto" />
     </div>
