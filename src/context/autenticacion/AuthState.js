@@ -21,6 +21,7 @@ const AuthState = (props) => {
     autenticado: null,
     usuario: null,
     mensaje: null,
+    cargando: true
   };
 
   // Dispatch para ejecutar las acciones
@@ -109,6 +110,7 @@ const AuthState = (props) => {
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
+        cargando: state.cargando,
         registrarUsuario,
         iniciarSesion,
         usuarioAutenticado,
