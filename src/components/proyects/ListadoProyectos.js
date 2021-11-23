@@ -31,7 +31,7 @@ const ListadoProyectos = () => {
   return (
     <ul className="listaProyectos">
       {proyectos.map((i) => (
-        <Proyecto key={i.id} proyecto={i}></Proyecto>
+        <Proyecto key={i._id} proyecto={i}></Proyecto>
       ))}
     </ul>
   );
