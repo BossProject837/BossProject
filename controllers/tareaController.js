@@ -40,7 +40,7 @@ exports.crearTarea = async (req, res) => {
 exports.obtenerTareas = async (req, res) => {
   try {
     // 84 - Extraer el proyecto
-    const { proyecto } = req.body;
+    const { proyecto } = req.query;
 
     // 85 - Comprobar si el proyecto existe
     const existeProyecto = await Proyecto.findById(proyecto);
